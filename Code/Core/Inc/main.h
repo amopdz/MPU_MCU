@@ -32,7 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "display7SEG.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -70,6 +70,20 @@ void Error_Handler(void);
 #define LED_YELLOW_2_GPIO_Port GPIOA
 #define LED_GREEN_2_Pin GPIO_PIN_6
 #define LED_GREEN_2_GPIO_Port GPIOA
+#define GATE0_Pin GPIO_PIN_0
+#define GATE0_GPIO_Port GPIOB
+#define GATE1_Pin GPIO_PIN_1
+#define GATE1_GPIO_Port GPIOB
+#define GATE2_Pin GPIO_PIN_2
+#define GATE2_GPIO_Port GPIOB
+#define GATE3_Pin GPIO_PIN_3
+#define GATE3_GPIO_Port GPIOB
+#define GATE4_Pin GPIO_PIN_4
+#define GATE4_GPIO_Port GPIOB
+#define GATE5_Pin GPIO_PIN_5
+#define GATE5_GPIO_Port GPIOB
+#define GATE6_Pin GPIO_PIN_6
+#define GATE6_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
