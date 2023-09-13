@@ -102,9 +102,10 @@ int main(void)
   int second = 4;
   while (1)
   {
+	  second = (second+1)%5;
 	  switch(status){
 		  case RY:
-			  if(second>=3){
+			  if(second>=2){
 				  status=RG;
 				  HAL_GPIO_WritePin(LED_YELLOW_2_GPIO_Port, LED_YELLOW_2_Pin, SET);
 				  HAL_GPIO_WritePin(LED_GREEN_2_GPIO_Port, LED_GREEN_2_Pin, RESET);
@@ -138,7 +139,6 @@ int main(void)
 		  default:
 			  break;
 	  }
-	  second = (second+1)%5;
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
