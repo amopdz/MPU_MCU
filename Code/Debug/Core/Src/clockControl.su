@@ -1,3 +1,8 @@
-clockControl.c:14:6:clearAllClock	8	static
-clockControl.c:29:6:setNumberOnClock	16	static
-clockControl.c:72:6:clearNumberOnClock	16	static
+clockControl.c:12:6:clearAllClock	8	static
+clockControl.c:27:6:setNumberOnClock	16	static
+clockControl.c:70:6:clearNumberOnClock	16	static
+clockControl.c:118:6:initTime	4	static
+clockControl.c:134:6:trackSecond	8	static
+clockControl.c:143:6:trackMinute	8	static
+clockControl.c:151:6:trackHour	8	static
+clockControl.c:156:6:doTime	8	static

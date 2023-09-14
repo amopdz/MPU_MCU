@@ -11,5 +11,10 @@
 void clearAllClock();
 void setNumberOnClock(int num);
 void clearNumberOnClock(int num);
+void initTime();
+void trackSecond();
+void trackMinute();
+void trackHour();
+void doTime();
 
 #endif /* INC_CLOCKCONTROL_H_ */

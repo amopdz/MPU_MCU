@@ -91,45 +91,12 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
-  enum StatusCode{Y,N}status=N;
+  //enum StatusCode{Y,N}status=N;
   //int second=59;
   while (1)
   {
 	  //second = (second+1)%60;
-	  switch(status){
-		  case Y:
-			  status=N;
-			  setNumberOnClock(0);
-			  setNumberOnClock(1);
-			  setNumberOnClock(2);
-			  setNumberOnClock(3);
-			  setNumberOnClock(4);
-			  setNumberOnClock(5);
-			  setNumberOnClock(6);
-			  setNumberOnClock(7);
-			  setNumberOnClock(8);
-			  setNumberOnClock(9);
-			  setNumberOnClock(10);
-			  setNumberOnClock(11);
-			  break;
-		  case N:
-			  status=Y;
-			  clearNumberOnClock(0);
-			  clearNumberOnClock(1);
-			  clearNumberOnClock(2);
-			  clearNumberOnClock(3);
-			  clearNumberOnClock(4);
-			  clearNumberOnClock(5);
-			  clearNumberOnClock(6);
-			  clearNumberOnClock(7);
-			  clearNumberOnClock(8);
-			  clearNumberOnClock(9);
-			  clearNumberOnClock(10);
-			  clearNumberOnClock(11);
-			  break;
-		  default:
-			  break;
-	  }
+	  doTime();
 	  HAL_Delay(1000);
 	  /*HAL_GPIO_WritePin(POINT0_GPIO_Port, POINT0_Pin, SET);
 	  HAL_GPIO_WritePin(POINT1_GPIO_Port, POINT1_Pin, SET);
