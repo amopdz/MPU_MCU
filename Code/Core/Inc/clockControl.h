@@ -10,5 +10,6 @@
 
 void clearAllClock();
 void setNumberOnClock(int num);
+void clearNumberOnClock(int num);
 
 #endif /* INC_CLOCKCONTROL_H_ */

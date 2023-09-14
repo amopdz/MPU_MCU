@@ -114,7 +114,18 @@ int main(void)
 			  break;
 		  case N:
 			  status=Y;
-			  clearAllClock();
+			  clearNumberOnClock(0);
+			  clearNumberOnClock(1);
+			  clearNumberOnClock(2);
+			  clearNumberOnClock(3);
+			  clearNumberOnClock(4);
+			  clearNumberOnClock(5);
+			  clearNumberOnClock(6);
+			  clearNumberOnClock(7);
+			  clearNumberOnClock(8);
+			  clearNumberOnClock(9);
+			  clearNumberOnClock(10);
+			  clearNumberOnClock(11);
 			  break;
 		  default:
 			  break;

@@ -1,2 +1,3 @@
 clockControl.c:14:6:clearAllClock	8	static
 clockControl.c:29:6:setNumberOnClock	16	static
+clockControl.c:72:6:clearNumberOnClock	16	static
