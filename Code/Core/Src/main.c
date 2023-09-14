@@ -47,6 +47,7 @@
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
+static void MX_GPIO_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -83,14 +84,51 @@ int main(void)
   /* USER CODE END SysInit */
 
   /* Initialize all configured peripherals */
+  MX_GPIO_Init();
   /* USER CODE BEGIN 2 */
 
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  enum StatusCode{Y,N}status=N;
   while (1)
   {
+	  switch(status){
+		  case Y:
+			  status=N;
+			  HAL_GPIO_WritePin(POINT0_GPIO_Port, POINT0_Pin, SET);
+			  HAL_GPIO_WritePin(POINT1_GPIO_Port, POINT1_Pin, SET);
+			  HAL_GPIO_WritePin(POINT2_GPIO_Port, POINT2_Pin, SET);
+			  HAL_GPIO_WritePin(POINT3_GPIO_Port, POINT3_Pin, SET);
+			  HAL_GPIO_WritePin(POINT4_GPIO_Port, POINT4_Pin, SET);
+			  HAL_GPIO_WritePin(POINT5_GPIO_Port, POINT5_Pin, SET);
+			  HAL_GPIO_WritePin(POINT6_GPIO_Port, POINT6_Pin, SET);
+			  HAL_GPIO_WritePin(POINT7_GPIO_Port, POINT7_Pin, SET);
+			  HAL_GPIO_WritePin(POINT8_GPIO_Port, POINT8_Pin, SET);
+			  HAL_GPIO_WritePin(POINT9_GPIO_Port, POINT9_Pin, SET);
+			  HAL_GPIO_WritePin(POINT10_GPIO_Port, POINT10_Pin, SET);
+			  HAL_GPIO_WritePin(POINT11_GPIO_Port, POINT11_Pin, SET);
+			  break;
+		  case N:
+			  status=Y;
+			  HAL_GPIO_WritePin(POINT0_GPIO_Port, POINT0_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT1_GPIO_Port, POINT1_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT2_GPIO_Port, POINT2_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT3_GPIO_Port, POINT3_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT4_GPIO_Port, POINT4_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT5_GPIO_Port, POINT5_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT6_GPIO_Port, POINT6_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT7_GPIO_Port, POINT7_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT8_GPIO_Port, POINT8_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT9_GPIO_Port, POINT9_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT10_GPIO_Port, POINT10_Pin, RESET);
+			  HAL_GPIO_WritePin(POINT11_GPIO_Port, POINT11_Pin, RESET);
+			  break;
+		  default:
+			  break;
+	  }
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -131,6 +169,36 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
+}
+
+/**
+  * @brief GPIO Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_GPIO_Init(void)
+{
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, POINT6_Pin|POINT7_Pin|POINT8_Pin|POINT9_Pin
+                          |POINT10_Pin|POINT11_Pin|POINT0_Pin|POINT1_Pin
+                          |POINT2_Pin|POINT3_Pin|POINT4_Pin|POINT5_Pin, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : POINT6_Pin POINT7_Pin POINT8_Pin POINT9_Pin
+                           POINT10_Pin POINT11_Pin POINT0_Pin POINT1_Pin
+                           POINT2_Pin POINT3_Pin POINT4_Pin POINT5_Pin */
+  GPIO_InitStruct.Pin = POINT6_Pin|POINT7_Pin|POINT8_Pin|POINT9_Pin
+                          |POINT10_Pin|POINT11_Pin|POINT0_Pin|POINT1_Pin
+                          |POINT2_Pin|POINT3_Pin|POINT4_Pin|POINT5_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
+
 }
 
 /* USER CODE BEGIN 4 */

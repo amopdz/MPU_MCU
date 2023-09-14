@@ -32,7 +32,7 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "clockControl.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -58,6 +58,30 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define POINT6_Pin GPIO_PIN_10
+#define POINT6_GPIO_Port GPIOB
+#define POINT7_Pin GPIO_PIN_11
+#define POINT7_GPIO_Port GPIOB
+#define POINT8_Pin GPIO_PIN_12
+#define POINT8_GPIO_Port GPIOB
+#define POINT9_Pin GPIO_PIN_13
+#define POINT9_GPIO_Port GPIOB
+#define POINT10_Pin GPIO_PIN_14
+#define POINT10_GPIO_Port GPIOB
+#define POINT11_Pin GPIO_PIN_15
+#define POINT11_GPIO_Port GPIOB
+#define POINT0_Pin GPIO_PIN_4
+#define POINT0_GPIO_Port GPIOB
+#define POINT1_Pin GPIO_PIN_5
+#define POINT1_GPIO_Port GPIOB
+#define POINT2_Pin GPIO_PIN_6
+#define POINT2_GPIO_Port GPIOB
+#define POINT3_Pin GPIO_PIN_7
+#define POINT3_GPIO_Port GPIOB
+#define POINT4_Pin GPIO_PIN_8
+#define POINT4_GPIO_Port GPIOB
+#define POINT5_Pin GPIO_PIN_9
+#define POINT5_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
