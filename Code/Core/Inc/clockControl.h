@@ -9,5 +9,6 @@
 #define INC_CLOCKCONTROL_H_
 
 void clearAllClock();
+void setNumberOnClock(int num);
 
 #endif /* INC_CLOCKCONTROL_H_ */

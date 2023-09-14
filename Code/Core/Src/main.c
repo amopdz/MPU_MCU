@@ -92,23 +92,25 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   enum StatusCode{Y,N}status=N;
+  //int second=59;
   while (1)
   {
+	  //second = (second+1)%60;
 	  switch(status){
 		  case Y:
 			  status=N;
-			  HAL_GPIO_WritePin(POINT0_GPIO_Port, POINT0_Pin, SET);
-			  HAL_GPIO_WritePin(POINT1_GPIO_Port, POINT1_Pin, SET);
-			  HAL_GPIO_WritePin(POINT2_GPIO_Port, POINT2_Pin, SET);
-			  HAL_GPIO_WritePin(POINT3_GPIO_Port, POINT3_Pin, SET);
-			  HAL_GPIO_WritePin(POINT4_GPIO_Port, POINT4_Pin, SET);
-			  HAL_GPIO_WritePin(POINT5_GPIO_Port, POINT5_Pin, SET);
-			  HAL_GPIO_WritePin(POINT6_GPIO_Port, POINT6_Pin, SET);
-			  HAL_GPIO_WritePin(POINT7_GPIO_Port, POINT7_Pin, SET);
-			  HAL_GPIO_WritePin(POINT8_GPIO_Port, POINT8_Pin, SET);
-			  HAL_GPIO_WritePin(POINT9_GPIO_Port, POINT9_Pin, SET);
-			  HAL_GPIO_WritePin(POINT10_GPIO_Port, POINT10_Pin, SET);
-			  HAL_GPIO_WritePin(POINT11_GPIO_Port, POINT11_Pin, SET);
+			  setNumberOnClock(0);
+			  setNumberOnClock(1);
+			  setNumberOnClock(2);
+			  setNumberOnClock(3);
+			  setNumberOnClock(4);
+			  setNumberOnClock(5);
+			  setNumberOnClock(6);
+			  setNumberOnClock(7);
+			  setNumberOnClock(8);
+			  setNumberOnClock(9);
+			  setNumberOnClock(10);
+			  setNumberOnClock(11);
 			  break;
 		  case N:
 			  status=Y;
@@ -118,6 +120,18 @@ int main(void)
 			  break;
 	  }
 	  HAL_Delay(1000);
+	  /*HAL_GPIO_WritePin(POINT0_GPIO_Port, POINT0_Pin, SET);
+	  HAL_GPIO_WritePin(POINT1_GPIO_Port, POINT1_Pin, SET);
+	  HAL_GPIO_WritePin(POINT2_GPIO_Port, POINT2_Pin, SET);
+	  HAL_GPIO_WritePin(POINT3_GPIO_Port, POINT3_Pin, SET);
+	  HAL_GPIO_WritePin(POINT4_GPIO_Port, POINT4_Pin, SET);
+	  HAL_GPIO_WritePin(POINT5_GPIO_Port, POINT5_Pin, SET);
+	  HAL_GPIO_WritePin(POINT6_GPIO_Port, POINT6_Pin, SET);
+	  HAL_GPIO_WritePin(POINT7_GPIO_Port, POINT7_Pin, SET);
+	  HAL_GPIO_WritePin(POINT8_GPIO_Port, POINT8_Pin, SET);
+	  HAL_GPIO_WritePin(POINT9_GPIO_Port, POINT9_Pin, SET);
+	  HAL_GPIO_WritePin(POINT10_GPIO_Port, POINT10_Pin, SET);
+	  HAL_GPIO_WritePin(POINT11_GPIO_Port, POINT11_Pin, SET);*/
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
