@@ -91,17 +91,31 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+  enum {R,Y}status=Y;
+  int sec = 1;
+  const int maxSec = 2;
   while (1)
   {
-	  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
-
-	  HAL_Delay(2000);
-
-	  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
-	  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
-
-	  HAL_Delay(2000);
+	  sec = (sec+1)%maxSec;
+	  switch(status){
+		  case R:
+			  if(sec==0){
+				  status=Y;
+				  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, RESET);
+				  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, SET);
+			  }
+			  break;
+		  case Y:
+			  if(sec==0){
+				  status=R;
+				  HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
+				  HAL_GPIO_WritePin(LED_YELLOW_GPIO_Port, LED_YELLOW_Pin, SET);
+			  }
+			  break;
+		  default:
+			  break;
+	  }
+	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
