@@ -5,86 +5,23 @@
  *      Author: hh.aof
  */
 #include "main.h"
+
+const uint32_t digitMask[] = {	//fetch bit by bit, small endian, first position -> final pin e.g Pin6
+		0x40,//0
+		0x79,//1
+		0x24,//2
+		0x30,//3
+		0x19,//4
+		0x12,//5
+		0x02,//6
+		0x78,//7
+		0x00,//8
+		0x10,//9
+		0x7F//10 e.g blank
+};
+
 void display7SEG(uint32_t number){
 	//initialize
-	HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, SET);
-	HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, SET);
-	HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, SET);
-	HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, SET);
-	HAL_GPIO_WritePin(GATE4_GPIO_Port, GATE4_Pin, SET);
-	HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, SET);
-	HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, SET);
-	switch(number){
-		case 0:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE4_GPIO_Port, GATE4_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			break;
-		case 1:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE2_Pin, RESET);
-			break;
-		case 2:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE4_GPIO_Port, GATE4_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 3:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 4:
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 5:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 6:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE4_GPIO_Port, GATE4_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 7:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			break;
-		case 8:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE4_GPIO_Port, GATE4_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		case 9:
-			HAL_GPIO_WritePin(GATE0_GPIO_Port, GATE0_Pin, RESET);
-			HAL_GPIO_WritePin(GATE1_GPIO_Port, GATE1_Pin, RESET);
-			HAL_GPIO_WritePin(GATE2_GPIO_Port, GATE2_Pin, RESET);
-			HAL_GPIO_WritePin(GATE3_GPIO_Port, GATE3_Pin, RESET);
-			HAL_GPIO_WritePin(GATE5_GPIO_Port, GATE5_Pin, RESET);
-			HAL_GPIO_WritePin(GATE6_GPIO_Port, GATE6_Pin, RESET);
-			break;
-		default:
-			break;
-	}
+	//GPIOB->ODR = digitMask[10];
+	if(number>=0 && number<10) GPIOB->ODR = digitMask[number];
 }
