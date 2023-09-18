@@ -127,30 +127,29 @@ void initTime(){
 	//Minimal path
 	H=0;
 	M=0;
-	S=0;
+	S=-1;
 	initFlag = 1;
 }
 
 void trackSecond(){
-	setNumberOnClock(S/5);
-	S++;
-	if(S>=60){
+	if(++S>=60){
 		M++;
 		S=0;
 	}
+	setNumberOnClock(S/5);
 }
 
 void trackMinute(){
-	setNumberOnClock(M/5);
 	if(M>=60){
 		H++;
 		M=0;
 	}
+	setNumberOnClock(M/5);
 }
 
 void trackHour(){
-	setNumberOnClock(H);
 	if(H>=12)H=0;
+	setNumberOnClock(H);
 }
 
 void doTime(){
