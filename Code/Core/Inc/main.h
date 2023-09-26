@@ -32,7 +32,6 @@ extern "C" {
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
@@ -60,10 +59,10 @@ void Error_Handler(void);
 /* Private defines -----------------------------------------------------------*/
 #define LED_RED_Pin GPIO_PIN_5
 #define LED_RED_GPIO_Port GPIOA
-#define RES0_Pin GPIO_PIN_6
-#define RES0_GPIO_Port GPIOA
-#define RES1_Pin GPIO_PIN_7
-#define RES1_GPIO_Port GPIOA
+#define EN0_Pin GPIO_PIN_6
+#define EN0_GPIO_Port GPIOA
+#define EN1_Pin GPIO_PIN_7
+#define EN1_GPIO_Port GPIOA
 #define SEG0_Pin GPIO_PIN_0
 #define SEG0_GPIO_Port GPIOB
 #define SEG1_Pin GPIO_PIN_1
@@ -79,7 +78,7 @@ void Error_Handler(void);
 #define SEG6_Pin GPIO_PIN_6
 #define SEG6_GPIO_Port GPIOB
 /* USER CODE BEGIN Private defines */
-int counter,flag;
+
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus
