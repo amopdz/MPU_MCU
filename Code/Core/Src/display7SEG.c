@@ -21,7 +21,7 @@ const uint32_t digitMask[] = {	//fetch bit by bit, small endian, first position 
 		0x7F//10 e.g blank
 };
 const int MAX_LED=4;
-int index_led=3;
+int index_led=3, hour = 15, minute = 8, second = 50;
 int led_buffer[]={1,2,3,4};
 
 void display7SEG(uint32_t number){
@@ -52,6 +52,13 @@ void update7SEG(int index){
 		default:
 			break;
 	}
+}
+
+void updateClockBuffer(){
+	led_buffer[0]=hour/10;
+	led_buffer[1]=hour%10;
+	led_buffer[2]=minute/10;
+	led_buffer[3]=minute%10;
 }
 
 /*void display7SEG(uint32_t number){

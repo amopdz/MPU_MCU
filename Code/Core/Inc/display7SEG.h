@@ -10,7 +10,7 @@
 
 const uint32_t digitMask[];
 extern const int MAX_LED;
-extern int index_led;
+extern int index_led, hour, minute, second;
 int led_buffer[];
 
 void display7SEG(uint32_t number);

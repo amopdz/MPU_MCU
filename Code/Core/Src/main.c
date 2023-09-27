@@ -97,6 +97,7 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(2);
   setTimer2(3);
+  setTimer3(5);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
@@ -112,6 +113,19 @@ int main(void)
 		  setTimer2(25);
 		  index_led=index_led>=MAX_LED-1?0:index_led+1;
 		  update7SEG(index_led);
+	  }
+	  if(timer3Flag==1){
+		  setTimer3(100);
+		  if(++second>=60){
+			  second=0;
+			  ++minute;
+		  }
+		  if(minute>=60){
+			  minute=0;
+			  ++hour;
+		  }
+		  if(hour>=24)hour=0;
+		  updateClockBuffer();
 	  }
     /* USER CODE END WHILE */
 
