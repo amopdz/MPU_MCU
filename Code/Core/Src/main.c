@@ -98,9 +98,8 @@ int main(void)
   setTimer1(2);
   setTimer2(3);
   int status = 2;
-  //HAL_GPIO_WritePin(LED_RED_GPIO_Port, LED_RED_Pin, RESET);
-  //HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
-  //HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
+  HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
+  HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, RESET);
   while (1)
   {
 	  if(timer1Flag==1){
@@ -250,7 +249,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-//int counter=100, flag = 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	timerRun();
 }
