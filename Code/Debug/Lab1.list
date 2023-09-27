@@ -278,8 +278,8 @@ int main(void)
  8000282:	681b      	ldr	r3, [r3, #0]
  8000284:	2b01      	cmp	r3, #1
  8000286:	d1ec      	bne.n	8000262 <main+0x52>
-		  setTimer2(50);
- 8000288:	2032      	movs	r0, #50	; 0x32
+		  setTimer2(25);
+ 8000288:	2019      	movs	r0, #25
  800028a:	f000 f9af 	bl	80005ec <setTimer2>
 		  index_led=index_led>=MAX_LED-1?0:index_led+1;
  800028e:	4b0e      	ldr	r3, [pc, #56]	; (80002c8 <main+0xb8>)
