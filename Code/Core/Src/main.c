@@ -116,15 +116,6 @@ int main(void)
 	  }
 	  if(timer3Flag==1){
 		  setTimer3(100);
-		  if(++second>=60){
-			  second=0;
-			  ++minute;
-		  }
-		  if(minute>=60){
-			  minute=0;
-			  ++hour;
-		  }
-		  if(hour>=24)hour=0;
 		  updateClockBuffer();
 	  }
     /* USER CODE END WHILE */
