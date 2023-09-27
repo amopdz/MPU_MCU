@@ -7,7 +7,7 @@
 #include "main.h"
 #include "display7SEG.h"
 
-const uint32_t digitMask[] = {	//fetch bit by bit, small endian, first position -> final pin e.g Pin6
+const uint8_t digitMask[] = {	//fetch bit by bit, small endian, first position -> final pin e.g Pin6
 		0x40,//0
 		0x79,//1
 		0x24,//2
@@ -23,11 +23,14 @@ const uint32_t digitMask[] = {	//fetch bit by bit, small endian, first position 
 const int MAX_LED=4;
 int index_led=3, hour = 15, minute = 8, second = 50;
 int led_buffer[]={1,2,3,4};
+uint8_t segOut,matOut;
+uint16_t BRegOut;
 
-void display7SEG(uint32_t number){
+void display7SEG(uint8_t number){
 	//initialize
 	//GPIOB->ODR = digitMask[10];
-	if(number>=0 && number<10) GPIOB->ODR = digitMask[number];
+	//if(number>=0 && number<10) GPIOB->ODR = digitMask[number];
+	if(number>=0 && number<10)segOut=digitMask[number];
 }
 
 void update7SEG(int index){
@@ -68,6 +71,64 @@ void updateClockBuffer(){
 	led_buffer[1]=hour%10;
 	led_buffer[2]=minute/10;
 	led_buffer[3]=minute%10;
+}
+
+const int MAX_LED_MATRIX = 8;
+int index_led_matrix = 7;
+uint8_t matrix_buffer[] = {
+		0x03,
+		0x1F,
+		0x7E,
+		0xE6,
+		0xE6,
+		0x7E,
+		0x1F,
+		0x03
+};
+
+void updateLEDMatrix(int index){
+	if(index>=0&&index<8)matOut=matrix_buffer[index];
+	switch(index){
+		case 0:
+			HAL_GPIO_TogglePin(ENM7_GPIO_Port, ENM7_Pin);
+			HAL_GPIO_TogglePin(ENM0_GPIO_Port, ENM0_Pin);
+			break;
+		case 1:
+			HAL_GPIO_TogglePin(ENM0_GPIO_Port, ENM0_Pin);
+			HAL_GPIO_TogglePin(ENM1_GPIO_Port, ENM1_Pin);
+			break;
+		case 2:
+			HAL_GPIO_TogglePin(ENM1_GPIO_Port, ENM1_Pin);
+			HAL_GPIO_TogglePin(ENM2_GPIO_Port, ENM2_Pin);
+			break;
+		case 3:
+			HAL_GPIO_TogglePin(ENM2_GPIO_Port, ENM2_Pin);
+			HAL_GPIO_TogglePin(ENM3_GPIO_Port, ENM3_Pin);
+			break;
+		case 4:
+			HAL_GPIO_TogglePin(ENM3_GPIO_Port, ENM3_Pin);
+			HAL_GPIO_TogglePin(ENM4_GPIO_Port, ENM4_Pin);
+			break;
+		case 5:
+			HAL_GPIO_TogglePin(ENM4_GPIO_Port, ENM4_Pin);
+			HAL_GPIO_TogglePin(ENM5_GPIO_Port, ENM5_Pin);
+			break;
+		case 6:
+			HAL_GPIO_TogglePin(ENM5_GPIO_Port, ENM5_Pin);
+			HAL_GPIO_TogglePin(ENM6_GPIO_Port, ENM6_Pin);
+			break;
+		case 7:
+			HAL_GPIO_TogglePin(ENM6_GPIO_Port, ENM6_Pin);
+			HAL_GPIO_TogglePin(ENM7_GPIO_Port, ENM7_Pin);
+			break;
+		default:
+			break;
+	}
+}
+
+void displayAll(){
+	BRegOut=((matOut)<<8)|(segOut);
+	GPIOB->ODR=BRegOut;
 }
 
 /*void display7SEG(uint32_t number){
