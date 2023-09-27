@@ -97,7 +97,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   setTimer1(2);
   setTimer2(3);
-  int status = 3;
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
@@ -111,34 +110,8 @@ int main(void)
 	  }
 	  if(timer2Flag==1){
 		  setTimer2(50);
-		  switch(status){
-			  case 0:
-				  HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
-				  HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
-				  display7SEG(2);
-				  status=1;
-				  break;
-			  case 1:
-				  HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
-				  HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
-				  display7SEG(3);
-				  status=2;
-				  break;
-			  case 2:
-				  HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
-				  HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
-				  display7SEG(0);
-				  status=3;
-				  break;
-			  case 3:
-				  HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
-				  HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
-				  display7SEG(1);
-				  status=0;
-				  break;
-			  default:
-				  break;
-		  }
+		  index_led=index_led>=MAX_LED-1?0:index_led+1;
+		  update7SEG(index_led);
 	  }
     /* USER CODE END WHILE */
 

@@ -20,11 +20,38 @@ const uint32_t digitMask[] = {	//fetch bit by bit, small endian, first position 
 		0x10,//9
 		0x7F//10 e.g blank
 };
+const int MAX_LED=4;
+int index_led=3;
+int led_buffer[]={1,2,3,4};
 
 void display7SEG(uint32_t number){
 	//initialize
 	//GPIOB->ODR = digitMask[10];
 	if(number>=0 && number<10) GPIOB->ODR = digitMask[number];
+}
+
+void update7SEG(int index){
+	display7SEG(led_buffer[index]);
+	switch(index){
+		case 0:
+			HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
+			HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
+			break;
+		case 1:
+			HAL_GPIO_TogglePin(EN0_GPIO_Port, EN0_Pin);
+			HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
+			break;
+		case 2:
+			HAL_GPIO_TogglePin(EN1_GPIO_Port, EN1_Pin);
+			HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
+			break;
+		case 3:
+			HAL_GPIO_TogglePin(EN2_GPIO_Port, EN2_Pin);
+			HAL_GPIO_TogglePin(EN3_GPIO_Port, EN3_Pin);
+			break;
+		default:
+			break;
+	}
 }
 
 /*void display7SEG(uint32_t number){
