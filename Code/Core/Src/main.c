@@ -100,6 +100,7 @@ int main(void)
   setTimer3(5);
   setTimer4(7);
   setTimer5(11);
+  setTimer6(13);
   HAL_GPIO_WritePin(EN0_GPIO_Port, EN0_Pin, SET);
   HAL_GPIO_WritePin(EN1_GPIO_Port, EN1_Pin, SET);
   HAL_GPIO_WritePin(EN2_GPIO_Port, EN2_Pin, SET);
@@ -141,6 +142,10 @@ int main(void)
 		  //display LED matrix & 7seg LED
 		  setTimer5(25);
 		  displayAll();
+	  }
+	  if(timer6Flag==1){
+		  setTimer6(200);
+		  updateAnim();
 	  }
     /* USER CODE END WHILE */
 

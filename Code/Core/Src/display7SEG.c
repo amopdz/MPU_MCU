@@ -74,20 +74,22 @@ void updateClockBuffer(){
 }
 
 const int MAX_LED_MATRIX = 8;
-int index_led_matrix = 7;
+int index_led_matrix = 7, index_mat_anim=MAX_LED_MATRIX*2-1;
 uint8_t matrix_buffer[] = {
-		0x03,
-		0x1F,
+		0x3C,
 		0x7E,
-		0xE6,
-		0xE6,
-		0x7E,
-		0x1F,
-		0x03
+		0xDB,
+		0x18,
+		0x18,
+		0x18,
+		0x18,
+		0x18,
+		0
 };
-
+int animIndex;
 void updateLEDMatrix(int index){
-	if(index>=0&&index<8)matOut=matrix_buffer[index];
+	animIndex=index+index_mat_anim>14?index+index_mat_anim-14:index+index_mat_anim<8?index+index_mat_anim:8;
+	matOut=matrix_buffer[animIndex];
 	switch(index){
 		case 0:
 			HAL_GPIO_TogglePin(ENM7_GPIO_Port, ENM7_Pin);
@@ -129,6 +131,10 @@ void updateLEDMatrix(int index){
 void displayAll(){
 	BRegOut=((matOut)<<8)|(segOut);
 	GPIOB->ODR=BRegOut;
+}
+
+void updateAnim(){
+	index_mat_anim=index_mat_anim>=MAX_LED_MATRIX*2-1?0:index_mat_anim+1;
 }
 
 /*void display7SEG(uint32_t number){

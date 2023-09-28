@@ -1,5 +1,6 @@
 display7SEG.c:29:6:display7SEG	16	static
 display7SEG.c:36:6:update7SEG	16	static
 display7SEG.c:60:6:updateClockBuffer	4	static
-display7SEG.c:89:6:updateLEDMatrix	16	static
-display7SEG.c:129:6:displayAll	4	static
+display7SEG.c:90:6:updateLEDMatrix	16	static
+display7SEG.c:131:6:displayAll	4	static
+display7SEG.c:136:6:updateAnim	4	static

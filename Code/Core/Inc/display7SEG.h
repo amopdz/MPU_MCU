@@ -19,9 +19,11 @@ void updateClockBuffer();
 
 extern const int MAX_LED_MATRIX;
 extern int index_led_matrix;
-uint8_t matrix_buffer[8];
+uint8_t matrix_buffer[9];
 
 void updateLEDMatrix(int index);
 void displayAll();
+
+void updateAnim();
 
 #endif /* INC_DISPLAY7SEG_H_ */
