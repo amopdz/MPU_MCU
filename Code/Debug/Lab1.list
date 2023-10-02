@@ -302,8 +302,8 @@ void updateClockBuffer(){
  80002d8:	20000000 	.word	0x20000000
 
 080002dc <updateLEDMatrix>:
-		0x18,
-		0x18,
+		0x40,
+		0x80,
 		0
 };
 int animIndex;

@@ -75,7 +75,7 @@ void updateClockBuffer(){
 
 const int MAX_LED_MATRIX = 8;
 int index_led_matrix = 7, index_mat_anim=MAX_LED_MATRIX*2-1;
-uint8_t matrix_buffer[] = {
+/*uint8_t matrix_buffer[] = {
 		0x3C,
 		0x7E,
 		0xDB,
@@ -84,6 +84,18 @@ uint8_t matrix_buffer[] = {
 		0x18,
 		0x18,
 		0x18,
+		0
+};*/
+
+uint8_t matrix_buffer[] = {
+		0x01,
+		0x02,
+		0x04,
+		0x08,
+		0x10,
+		0x20,
+		0x40,
+		0x80,
 		0
 };
 int animIndex;
